@@ -1,0 +1,125 @@
+package com.aiways.recovery.config.security;
+
+/**
+ * Constants for Spring Security authorities.
+ */
+public final class AuthoritiesConstants {
+
+    public static final String ADMIN = "ROLE_ADMIN";
+    public static final String USER = "ROLE_USER";
+    public static final String ANONYMOUS = "ROLE_ANONYMOUS";
+
+    // 前缀
+    public static final String ROLE = "ROLE_";
+
+    // 服务
+    public static final String POWER_MANAGE = "POWER_MANAGE_";
+
+    // 模块
+    public static final String SO_CUSTOMER = "SO_CUSTOMER_";
+    public static final String OP_PACKEXCHANGE = "OP_PACKEXCHANGE_";
+    public static final String REC_RECOVERY = "REC_RECOVERY_";
+    public static final String REC_RETIRE = "REC_RETIRE_";
+    public static final String REC_SERVICE_DOT = "REC_SERVICE_DOT_";
+    public static final String REC_SERVICE_PROVIDER = "REC_SERVICE_PROVIDER_";
+    public static final String REC_BATTERY = "REC_BATTERY_";
+
+    // 权限
+    public static final String DETAIL = "DETAIL";
+    public static final String VIEW = "VIEW";
+    public static final String ADD = "ADD";
+    public static final String DELETE = "DELETE";
+    public static final String EDIT = "EDIT";
+    public static final String IMPORT = "IMPORT";
+    public static final String EXPORT = "EXPORT";
+    public static final String ACCEPT_RECORD_DATA = "ACCEPT_RECORD_DATA";
+    public static final String CONTRACT = "CONTRACT";
+    public static final String ANNEX = "ANNEX";
+
+    // 新车销售
+    public static final String ROLE_POWER_MANAGE_SO_CUSTOMER_DETAIL = ROLE + POWER_MANAGE + SO_CUSTOMER + DETAIL;
+    public static final String ROLE_POWER_MANAGE_SO_CUSTOMER_ADD = ROLE + POWER_MANAGE + SO_CUSTOMER + ADD;
+    public static final String ROLE_POWER_MANAGE_SO_CUSTOMER_DELETE = ROLE + POWER_MANAGE + SO_CUSTOMER + DELETE;
+    public static final String ROLE_POWER_MANAGE_SO_CUSTOMER_EXPORT= ROLE + POWER_MANAGE + SO_CUSTOMER + EXPORT;
+    public static final String ROLE_POWER_MANAGE_SO_CUSTOMER_VIEW = ROLE + POWER_MANAGE + SO_CUSTOMER + VIEW;
+    public static final String ROLE_POWER_MANAGE_SO_CUSTOMER_IMPORT = ROLE + POWER_MANAGE + SO_CUSTOMER + IMPORT;
+
+    // 电池包更换
+    public static final String ROLE_POWER_MANAGE_OP_PACKEXCHANGE_DETAIL = ROLE + POWER_MANAGE + OP_PACKEXCHANGE + DETAIL;
+    public static final String ROLE_POWER_MANAGE_OP_PACKEXCHANGE_DELETE = ROLE + POWER_MANAGE + OP_PACKEXCHANGE + DELETE;
+    public static final String ROLE_POWER_MANAGE_OP_PACKEXCHANGE_EXPORT= ROLE + POWER_MANAGE + OP_PACKEXCHANGE + EXPORT;
+    public static final String ROLE_POWER_MANAGE_OP_PACKEXCHANGE_VIEW = ROLE + POWER_MANAGE + OP_PACKEXCHANGE + VIEW;
+    public static final String ROLE_POWER_MANAGE_OP_PACKEXCHANGE_IMPORT = ROLE + POWER_MANAGE + OP_PACKEXCHANGE + IMPORT;
+
+    // 电池回收
+    public static final String ROLE_POWER_MANAGE_REC_RECOVERY_DETAIL = ROLE + POWER_MANAGE + REC_RECOVERY + DETAIL;
+    public static final String ROLE_POWER_MANAGE_REC_RECOVERY_ADD = ROLE + POWER_MANAGE + REC_RECOVERY + ADD;
+    public static final String ROLE_POWER_MANAGE_REC_RECOVERY_DELETE = ROLE + POWER_MANAGE + REC_RECOVERY + DELETE;
+    public static final String ROLE_POWER_MANAGE_REC_RECOVERY_EXPORT= ROLE + POWER_MANAGE + REC_RECOVERY + EXPORT;
+    public static final String ROLE_POWER_MANAGE_REC_RECOVERY_VIEW = ROLE + POWER_MANAGE + REC_RECOVERY + VIEW;
+    public static final String ROLE_POWER_MANAGE_REC_RECOVERY_IMPORT = ROLE + POWER_MANAGE + REC_RECOVERY + IMPORT;
+
+    // 电池退役
+
+    public static final String ROLE_POWER_MANAGE_REC_RETIRE_DETAIL = ROLE + POWER_MANAGE + REC_RETIRE + DETAIL;
+    public static final String ROLE_POWER_MANAGE_REC_RETIRE_ADD = ROLE + POWER_MANAGE + REC_RETIRE + ADD;
+    public static final String ROLE_POWER_MANAGE_REC_RETIRE_DELETE = ROLE + POWER_MANAGE + REC_RETIRE + DELETE;
+    public static final String ROLE_POWER_MANAGE_REC_RETIRE_EXPORT= ROLE + POWER_MANAGE + REC_RETIRE + EXPORT;
+    public static final String ROLE_POWER_MANAGE_REC_RETIRE_VIEW = ROLE + POWER_MANAGE + REC_RETIRE + VIEW;
+    public static final String ROLE_POWER_MANAGE_REC_RETIRE_IMPORT = ROLE + POWER_MANAGE + REC_RETIRE + IMPORT;
+
+    // 电池回收服务网点
+    public static final String ROLE_POWER_MANAGE_REC_SERVICE_DOT_DETAIL = ROLE + POWER_MANAGE + REC_SERVICE_DOT + DETAIL;
+    public static final String ROLE_POWER_MANAGE_REC_SERVICE_DOT_ADD = ROLE + POWER_MANAGE + REC_SERVICE_DOT + ADD;
+    public static final String ROLE_POWER_MANAGE_REC_SERVICE_DOT_DELETE = ROLE + POWER_MANAGE + REC_SERVICE_DOT + DELETE;
+    public static final String ROLE_POWER_MANAGE_REC_SERVICE_DOT_EDIT = ROLE + POWER_MANAGE + REC_SERVICE_DOT + EDIT;
+    public static final String ROLE_POWER_MANAGE_REC_SERVICE_DOT_EXPORT= ROLE + POWER_MANAGE + REC_SERVICE_DOT + EXPORT;
+    public static final String ROLE_POWER_MANAGE_REC_SERVICE_DOT_VIEW = ROLE + POWER_MANAGE + REC_SERVICE_DOT + VIEW;
+    public static final String ROLE_POWER_MANAGE_REC_SERVICE_DOT_IMPORT = ROLE + POWER_MANAGE + REC_SERVICE_DOT + IMPORT;
+    public static final String ROLE_POWER_MANAGE_REC_SERVICE_DOT_ACCEPT_RECORD_DATA = ROLE + POWER_MANAGE + REC_SERVICE_DOT + ACCEPT_RECORD_DATA;
+
+    // 电池回收服务商
+    public static final String ROLE_POWER_MANAGE_REC_SERVICE_PROVIDER_DETAIL = ROLE + POWER_MANAGE + REC_SERVICE_PROVIDER + DETAIL;
+    public static final String ROLE_POWER_MANAGE_REC_SERVICE_PROVIDER_ADD = ROLE + POWER_MANAGE + REC_SERVICE_PROVIDER + ADD;
+    public static final String ROLE_POWER_MANAGE_REC_SERVICE_PROVIDER_DELETE = ROLE + POWER_MANAGE + REC_SERVICE_PROVIDER + DELETE;
+    public static final String ROLE_POWER_MANAGE_REC_SERVICE_PROVIDER_EDIT = ROLE + POWER_MANAGE + REC_SERVICE_PROVIDER + EDIT;
+    public static final String ROLE_POWER_MANAGE_REC_SERVICE_PROVIDER_EXPORT= ROLE + POWER_MANAGE + REC_SERVICE_PROVIDER + EXPORT;
+    public static final String ROLE_POWER_MANAGE_REC_SERVICE_PROVIDER_VIEW = ROLE + POWER_MANAGE + REC_SERVICE_PROVIDER + VIEW;
+    public static final String ROLE_POWER_MANAGE_REC_SERVICE_PROVIDER_IMPORT = ROLE + POWER_MANAGE + REC_SERVICE_PROVIDER + IMPORT;
+    public static final String ROLE_POWER_MANAGE_REC_SERVICE_PROVIDER_ACCEPT_RECORD_DATA = ROLE + POWER_MANAGE + REC_SERVICE_PROVIDER + ACCEPT_RECORD_DATA;
+
+    // 其他服务页面需要添加的权限
+    public static final String ROLE_PREPARE_VEHICLEMANUFACTURING_DETAIL = "ROLE_PREPARE_VEHICLEMANUFACTURING_DETAIL";
+    public static final String ROLE_ASSETS_PACK_PREVIEW = "ROLE_ASSETS_PACK_PREVIEW";
+
+    // 电池回收合同管理
+    public static final String ROLE_POWER_MANAGE_REC_BATTERY_CONTRACT = ROLE + POWER_MANAGE + REC_BATTERY + CONTRACT;
+    public static final String ROLE_POWER_MANAGE_REC_BATTERY_ANNEX = ROLE + POWER_MANAGE + REC_BATTERY + ANNEX;
+
+    private AuthoritiesConstants() {
+    }
+}
+
+
+      // 新车销售
+//    public static final String ROLE_POWER_MANAGE_SO_CUSTOMER_EDIT = ROLE + POWER_MANAGE + SO_CUSTOMER + EDIT;
+//    public static final String ROLE_POWER_MANAGE_SO_CUSTOMER_DOWNLOAD_TEMPLATE = ROLE + POWER_MANAGE + SO_CUSTOMER + DOWNLOAD_TEMPLATE;
+
+      // 电池包更换
+//    public static final String ROLE_POWER_MANAGE_OP_PACKEXCHANGE_ADD = ROLE + POWER_MANAGE + OP_PACKEXCHANGE + ADD;
+//    public static final String ROLE_POWER_MANAGE_OP_PACKEXCHANGE_EDIT = ROLE + POWER_MANAGE + OP_PACKEXCHANGE + EDIT;
+//    public static final String ROLE_POWER_MANAGE_OP_PACKEXCHANGE_DOWNLOAD_TEMPLATE = ROLE + POWER_MANAGE + OP_PACKEXCHANGE + DOWNLOAD_TEMPLATE;
+
+      // 电池回收
+//    public static final String ROLE_POWER_MANAGE_REC_RECOVERY_EDIT = ROLE + POWER_MANAGE + REC_RECOVERY + EDIT;
+//    public static final String ROLE_POWER_MANAGE_REC_RECOVERY_DOWNLOAD_TEMPLATE = ROLE + POWER_MANAGE + REC_RECOVERY + DOWNLOAD_TEMPLATE;
+
+     // 电池退役
+//    public static final String ROLE_POWER_MANAGE_REC_RETIRE_EDIT = ROLE + POWER_MANAGE + REC_RETIRE + EDIT;
+//    public static final String ROLE_POWER_MANAGE_REC_RETIRE_DOWNLOAD_TEMPLATE = ROLE + POWER_MANAGE + REC_RETIRE + DOWNLOAD_TEMPLATE;
+
+      // 电池回收服务网点
+//    public static final String ROLE_POWER_MANAGE_REC_SERVICE_DOT_DOWNLOAD_TEMPLATE = ROLE + POWER_MANAGE + REC_SERVICE_DOT + DOWNLOAD_TEMPLATE;
+
+      // 电池回收服务商
+//    public static final String ROLE_POWER_MANAGE_REC_SERVICE_PROVIDER_DOWNLOAD_TEMPLATE = ROLE + POWER_MANAGE + REC_SERVICE_PROVIDER + DOWNLOAD_TEMPLATE;

@@ -1,0 +1,242 @@
+# ===================================================================
+# Spring Boot configuration for the "dev" profile.
+#
+# This configuration overrides the application.yml file.
+#
+# More information on profiles: http://www.jhipster.tech/profiles/
+# More information on configuration properties: http://www.jhipster.tech/common-application-properties/
+# ===================================================================
+
+# ===================================================================
+# Standard Spring Boot properties.
+# Full reference is available at:
+# http://docs.spring.io/spring-boot/docs/current/reference/html/common-application-properties.html
+# ===================================================================
+
+logging:
+    level:
+        ROOT: debug
+        com.aiways.preprae: DEBUG
+        io.github.jhipster: DEBUG
+        javax.activation: WARN
+        javax.mail: WARN
+        javax.xml.bind: WARN
+        ch.qos.logback: debug
+        com.codahale.metrics: WARN
+        com.netflix: WARN
+        com.netflix.discovery: INFO
+        com.ryantenney: WARN
+        com.sun: WARN
+        com.zaxxer: WARN
+        io.undertow: WARN
+        io.undertow.websockets.jsr: ERROR
+        org.apache: WARN
+        org.apache.catalina.startup.DigesterFactory: OFF
+        org.bson: WARN
+        org.hibernate.validator: WARN
+        org.hibernate: WARN
+        org.hibernate.ejb.HibernatePersistence: OFF
+        org.springframework: WARN
+        org.springframework.web: WARN
+        org.springframework.security: WARN
+        org.springframework.cache: WARN
+        org.thymeleaf: WARN
+        org.xnio: WARN
+        springfox: WARN
+        sun.rmi: WARN
+        liquibase: debug
+        LiquibaseSchemaResolver: INFO
+        sun.net.www: INFO
+        sun.rmi.transport: WARN
+
+eureka:
+    instance:
+        prefer-ip-address: true
+    client:
+        service-url:
+            defaultZone: http://admin:admin@10.100.81.152:8761/eureka/
+
+spring:
+    logstash:
+        destination: 10.100.81.173:4560
+    profiles:
+        active: dev
+        include: swagger,zipkin
+    devtools:
+        restart:
+            enabled: true
+        livereload:
+            enabled: false # we use gulp + BrowserSync for livereload
+    jackson:
+        serialization.indent_output: true
+        time-zone: GMT+8
+    datasource:
+        type: com.alibaba.druid.pool.DruidDataSource
+        url: jdbc:mysql://127.0.0.1:3306/test3?useUnicode=true&characterEncoding=utf8&useSSL=false
+        username: root
+        password:
+        hikari:
+            data-source-properties:
+                cachePrepStmts: true
+                prepStmtCacheSize: 250
+                prepStmtCacheSqlLimit: 2048
+                useServerPrepStmts: true
+    mail:
+        host: localhost
+        port: 25
+        username:
+        password:
+    messages.ca:
+        cache-seconds: 1
+    thymeleaf:
+        cache: false
+    zipkin: # Use the "zipkin" Maven profile to have the Spring Cloud Zipkin dependencies
+        base-url: http://10.100.81.155:9411
+        enabled: true
+        locator:
+            discovery:
+                enabled: true
+        encoder: JSON_V1
+    sleuth:
+        sampler:
+            percentage: 1 #zipkin采样率，默认为0.1，改为1后全采样，但是会降低接口调用效率
+    redis:
+        jedis:
+            pool:
+                max-active: 60
+                max-wait: 5000
+                min-idle: 1
+                max-idle: 10
+        timeout: 5000
+        database: 0
+        host: r-uf6b9fd7cc141fe4.redis.rds.aliyuncs.com
+        port: 6379
+        password: lrnJ5OPK
+    liquibase:
+        enabled: false
+
+    rabbitmq:
+        addresses: 10.100.2.92:5672,10.100.81.151:5672
+        username: dev_power
+        password: Pass1234
+        virtual-host: power
+        listener:
+            direct:
+                acknowledge-mode: none
+            simple:
+                acknowledge-mode: none
+        publisher-confirms: true
+        publisher-returns: true
+
+    elasticsearch:
+        jest:
+            uris: http://10.100.81.173:9200,http://10.100.81.174:9200,http://10.100.81.175:9200
+            read-timeout: 5000
+            connection-timeout: 20000
+
+# ===================================================================
+# To enable SSL, generate a certificate using:
+# keytool -genkey -alias powerpreprae -storetype PKCS12 -keyalg RSA -keysize 2048 -keystore keystore.p12 -validity 3650
+#
+# You can also use Let's Encrypt:
+# https://maximilian-boehm.com/hp2121/Create-a-Java-Keystore-JKS-from-Let-s-Encrypt-Certificates.htm
+#
+# Then, modify the server.ssl properties so your "server" configuration looks like:
+#
+# server:
+#    port: 8443
+#    ssl:
+#        key-store: keystore.p12
+#        key-store-password: <your-password>
+#        key-store-type: PKCS12
+#        key-alias: powerpreprae
+# ===================================================================
+server:
+    port: 8089
+
+# ===================================================================
+# JHipster specific properties
+#
+# Full reference is available at: http://www.jhipster.tech/common-application-properties/
+# ===================================================================
+
+jhipster:
+    http:
+        version: V_1_1 # To use HTTP/2 you will need SSL support (see above the "server.ssl" configuration)
+    # CORS is disabled by default on microservices, as you should access them through a gateway.
+    # If you want to enable it, please uncomment the configuration below.
+    # cors:
+        # allowed-origins: "*"
+        # allowed-methods: "*"
+        # allowed-headers: "*"
+        # exposed-headers: "Authorization,Link,X-Total-Count"
+        # allow-credentials: true
+        # max-age: 1800
+    security:
+        client-authorization:
+            access-token-uri: http://uaa/oauth/token
+            token-service-id: uaa
+            client-id: internal
+            client-secret: internal
+    mail: # specific JHipster mail property, for standard properties see MailProperties
+        from: powerpreprae@localhost
+        base-url: http://127.0.0.1:8084
+    metrics: # DropWizard Metrics configuration, used by MetricsConfiguration
+        jmx.enabled: true
+        graphite: # Use the "graphite" Maven profile to have the Graphite dependencies
+            enabled: false
+            host: localhost
+            port: 2003
+            prefix: powerpreprae
+        prometheus: # Use the "prometheus" Maven profile to have the Prometheus dependencies
+            enabled: false
+            endpoint: /prometheusMetrics
+        logs: # Reports Dropwizard metrics in the logs
+            enabled: false
+            report-frequency: 60 # in seconds
+    logging:
+        logstash: # Forward logs to logstash over a socket, used by LoggingConfiguration
+            enabled: false
+            host: localhost
+            port: 5000
+            queue-size: 512
+        spectator-metrics: # Reports Spectator Circuit Breaker metrics in the logs
+            enabled: false
+            # edit spring.metrics.export.delay-millis to set report frequency
+
+oauth2:
+    signature-verification:
+        public-key-endpoint-uri: http://uaa/oauth/token_key
+        #ttl for public keys to verify JWT tokens (in ms)
+        ttl: 3600000
+        #max. rate at which public keys will be fetched (in ms)
+        public-key-refresh-rate-limit: 10000
+    web-client-configuration:
+        #keep in sync with UAA configuration
+        client-id: web_app
+        secret: changeit
+
+# ===================================================================
+# Application specific properties
+# Add your own application properties here, see the ApplicationProperties class
+# to have type-safe configuration, like in the JHipsterProperties above
+#
+# More documentation is available at:
+# http://www.jhipster.tech/common-application-properties/
+# ===================================================================
+
+application:
+    # 第三方接口所用的租户id
+    aiways-tenant-id: 8014ae16-35a4-431d-93fd-71311cfe3b2q
+mybatis:
+  type-aliases-package: com.aiways.**.domain
+  mapper-locations: com.aiways.**.mapper.*.xml
+  configuration:
+    map-underscore-to-camel-case: true
+    use-generated-keys: true
+    default-fetch-size: 100
+    default-statement-timeout: 30
+
+
+    # ESB推送地标地址
+    # esb-url: http://10.64.19.85:7080/esb/comm/api
