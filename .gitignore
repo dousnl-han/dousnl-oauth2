@@ -1,0 +1,33 @@
+##ignore this file##
+**/target/
+/target/
+**/*.iml
+*/logs/*
+/bin/
+
+
+.classpath
+.project
+.settings 
+ ##filter databfile¡¢sln file##
+*.mdb
+*.ldb
+*.sln
+##class file##
+*.com
+*.class 
+*.dll
+*.exe
+
+# Package Files #
+*.jar
+*.war
+*.ear
+*.idea
+
+# build Files #
+build.gradle
+gradle.properties
+build/
+.gradle/
+gradle-config
