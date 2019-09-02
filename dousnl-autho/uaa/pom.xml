@@ -12,7 +12,7 @@
     <artifactId>uaa</artifactId>
     <packaging>war</packaging>
 
-    <name>uaa Maven Webapp</name>
+    <name>uaa</name>
     <!-- FIXME change it to the project's website -->
     <url>http://www.example.com</url>
 
@@ -72,10 +72,33 @@
             <artifactId>fastjson</artifactId>
             <version>1.2.28</version>
         </dependency>
+        <dependency>
+            <groupId>log4j</groupId>
+            <artifactId>log4j</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>org.springframework.data</groupId>
+            <artifactId>spring-data-redis</artifactId>
+            <version>1.7.1.RELEASE</version>
+        </dependency>
+        <!--v1.1新增redis token缓存-->
+        <!--Redis-->
+        <!-- java Redis jar开始 -->
+
     </dependencies>
 
     <build>
         <finalName>uaa</finalName>
+        <plugins>
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-compiler-plugin</artifactId>
+                <configuration>
+                    <source>8</source>
+                    <target>8</target>
+                </configuration>
+            </plugin>
+        </plugins>
         <resources>
             <resource>
                 <directory>src/main/resources/</directory>

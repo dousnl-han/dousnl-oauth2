@@ -10,6 +10,7 @@ import com.dousnl.util.HttpClentUtils;
 import com.dousnl.util.Result;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Service;
 import java.io.IOException;
 import java.util.Base64;
@@ -26,6 +27,13 @@ import java.util.Map;
 @Slf4j
 @Service
 public class UserServiceDetail {
+
+    @Value("${client_id}")
+    private String clientId;
+    @Value("${secret}")
+    private String secret;
+
+    private static final String CLIENT_SECRET_PRE="Basic ";
 
     @Autowired
     private UserMapper userMapper;
@@ -58,21 +66,22 @@ public class UserServiceDetail {
         return dto;
     }
 
-    public JWT execPost(String username, String password){
+    public JWT execPost(String username, String password) {
         //dXNlci1zZXJ2aWNlOjEyMzQ1Ng== 是 user-service:123456的 base64编码
         //JWT jwt=client.getToken("Basic dXNlci1zZXJ2aWNlOjEyMzQ1Ng==", "password", username, password);
-        String url="http://localhost:8080/oauth/token";
-        Map<String, String> headers=new HashMap<String, String>();
-        Map<String, String> params=new HashMap<String, String>();
-        Base64.getEncoder().encode("".getBytes());
-        headers.put("Authorization","Basic dXNlci1zZXJ2aWNlOjEyMzQ1Ng==");
-        params.put("grant_type","password");
-        params.put("username",username);
-        params.put("password",password);
+        String url = "http://localhost:8080/oauth/token";
+        Map<String, String> headers = new HashMap<String, String>();
+        Map<String, String> params = new HashMap<String, String>();
+        String format = String.format("%s:%s", clientId, secret);
+        String client = Base64.getEncoder().encodeToString(format.getBytes());
+        headers.put("Authorization", CLIENT_SECRET_PRE + client);
+        params.put("grant_type", "password");
+        params.put("username", username);
+        params.put("password", password);
         try {
             Result res = HttpClentUtils.post(url, headers, params, "UTF-8");
-            System.out.println(">>>>>>>autho2-uaa返回:"+ res.getBody());
-            JWT jwt=JSON.parseObject(res.getBody(),JWT.class);
+            System.out.println(">>>>>>>autho2-uaa返回:" + res.getBody());
+            JWT jwt = JSON.parseObject(res.getBody(), JWT.class);
             return jwt;
         } catch (IOException e) {
             e.printStackTrace();

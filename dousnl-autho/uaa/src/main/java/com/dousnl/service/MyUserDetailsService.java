@@ -18,8 +18,8 @@ import java.util.Optional;
  * @version 1.0
  * @date 2019/7/26 16:43
  */
-@Service("clientUserDetailsService")
-public class ClientUserDetailsService implements UserDetailsService {
+@Service("userDetailsService")
+public class MyUserDetailsService implements UserDetailsService {
 
     @Autowired
     private UserMapper userMapper;

@@ -6,6 +6,11 @@ import org.springframework.security.config.annotation.method.configuration.Globa
 
 /**
  * 启动注解方法安全性
+ * @EnableGlobalMethodSecurity(prePostEnabled = true,jsr250Enabled = true,securedEnabled = true)
+ * prePostEnabled ：启用@PreAuthorize
+ * jsr250Enabled ：启用@RolesAllowed
+ * securedEnabled ：启用@Secured
+ * 注意事项：@Secured对应的角色必须要有ROLE_前缀!
  *
  * @author hanliang
  * @version 1.0

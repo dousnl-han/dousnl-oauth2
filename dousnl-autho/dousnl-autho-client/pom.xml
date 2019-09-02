@@ -12,7 +12,7 @@
     <artifactId>dousnl-autho-client</artifactId>
     <packaging>war</packaging>
 
-    <name>dousnl-autho-client Maven Webapp</name>
+    <name>dousnl-autho-client</name>
     <url>http://www.example.com</url>
 
     <properties>

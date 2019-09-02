@@ -6,6 +6,7 @@ import org.springframework.boot.autoconfigure.security.oauth2.resource.ResourceS
 import org.springframework.boot.web.client.RestTemplateCustomizer;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
+import org.springframework.core.annotation.Order;
 import org.springframework.core.io.ClassPathResource;
 import org.springframework.core.io.Resource;
 import org.springframework.security.jwt.crypto.sign.RsaVerifier;
@@ -30,15 +31,22 @@ public class JwtConfig {
     @Autowired
     private JwtAccessTokenConverter jwtAccessTokenConverter;
 
-    @Autowired
-    private ResourceServerProperties resourceServerProperties;
+    //@Autowired
+    //private ResourceServerProperties resourceServerProperties;
 
     @Bean
     public TokenStore tokenStore(){
         return new JwtTokenStore(jwtAccessTokenConverter);
     }
 
-
+    /**
+     * v1.1 start project to uaa get public.cert
+     * @return
+     */
+//    @Bean
+//    public JwtAccessTokenConverter jwtAccessTokenConverter(OAuth2SignatureVerifierClient signatureVerifierClient) {
+//        return new OAuth2JwtAccessTokenConverter(signatureVerifierClient);
+//    }
     //对称方式效验
 //    @Bean
 //    public JwtAccessTokenConverter accessTokenConverter() {
@@ -46,7 +54,7 @@ public class JwtConfig {
 //        converter.setSigningKey("test-secret");
 //        return converter;
 //    }
-    //对称方式效验
+    //非对称方式效验
     @Bean
     public JwtAccessTokenConverter accessTokenConverter() {
         JwtAccessTokenConverter converter= new JwtAccessTokenConverter();
@@ -63,11 +71,9 @@ public class JwtConfig {
         converter.setVerifier(new RsaVerifier(publicKey));
         return converter;
     }
-
     @Bean
     public RestTemplate loadBalancedRestTemplate() {
         RestTemplate restTemplate = new RestTemplate();
         return restTemplate;
     }
-
 }

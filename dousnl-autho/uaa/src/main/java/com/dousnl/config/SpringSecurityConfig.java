@@ -29,7 +29,7 @@ import org.springframework.security.crypto.password.PasswordEncoder;
 public class SpringSecurityConfig extends WebSecurityConfigurerAdapter {
 
     @Autowired
-    @Qualifier("clientUserDetailsService")
+    @Qualifier("userDetailsService")
     private UserDetailsService userDetailsService;
 
     @Override
