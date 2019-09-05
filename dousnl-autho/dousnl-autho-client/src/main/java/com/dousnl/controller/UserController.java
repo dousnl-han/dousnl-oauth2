@@ -1,11 +1,16 @@
 package com.dousnl.controller;
 
+import com.alibaba.fastjson.JSON;
 import com.dousnl.domain.User;
 import com.dousnl.domain.UserLoginDTO;
 import com.dousnl.service.UserServiceDetail;
+import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.web.bind.annotation.*;
+
+import java.text.SimpleDateFormat;
+import java.util.Date;
 
 /**
  * TODO
@@ -14,6 +19,7 @@ import org.springframework.web.bind.annotation.*;
  * @version 1.0
  * @date 2019/8/26 18:40
  */
+@Slf4j
 @RestController
 @RequestMapping("/user")
 public class UserController {
@@ -21,6 +27,8 @@ public class UserController {
 
     @Autowired
     private UserServiceDetail userServiceDetail;
+
+    private static final SimpleDateFormat format=new SimpleDateFormat("yyyy-MM-dd HH:mm:ss:sss");
 
     @PostMapping("/register")
     @PreAuthorize("hasAuthority('ROLE_ADMIN')")
@@ -35,6 +43,7 @@ public class UserController {
 
     @GetMapping("/getuser")
     public User login(@RequestParam("id") Integer id) {
-        return userServiceDetail.getUser(id);
+        User user = userServiceDetail.getUser(id);
+        return user;
     }
 }

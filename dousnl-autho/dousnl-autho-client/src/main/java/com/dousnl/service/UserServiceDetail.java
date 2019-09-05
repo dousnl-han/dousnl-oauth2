@@ -13,7 +13,9 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Service;
 import java.io.IOException;
+import java.text.SimpleDateFormat;
 import java.util.Base64;
+import java.util.Date;
 import java.util.HashMap;
 import java.util.Map;
 
@@ -32,6 +34,9 @@ public class UserServiceDetail {
     private String clientId;
     @Value("${secret}")
     private String secret;
+
+
+    private static final SimpleDateFormat format=new SimpleDateFormat("yyyy-MM-dd HH:mm:ss:sss");
 
     private static final String CLIENT_SECRET_PRE="Basic ";
 
@@ -91,7 +96,7 @@ public class UserServiceDetail {
 
     public User getUser(Integer id) {
         User user = userMapper.selectByPrimaryKey(id);
-        log.info(">>>>>>>>获取用户信息:{}", JSON.toJSONString(user));
+        log.info("时间：{} ，获取用户信息：{}", format.format(new Date()), JSON.toJSONString(user));
         return user;
     }
 
