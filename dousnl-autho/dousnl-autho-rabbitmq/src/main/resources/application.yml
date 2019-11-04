@@ -1,0 +1,10 @@
+server:
+  port: 8011
+spring:
+  application:
+    name: rabbitmq-client
+  rabbitmq:
+    host: 192.168.59.128
+    port: 5672
+    username: dousnl
+    password: 123456
