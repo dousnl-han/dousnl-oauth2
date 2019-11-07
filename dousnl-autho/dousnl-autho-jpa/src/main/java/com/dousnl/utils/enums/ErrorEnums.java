@@ -6,8 +6,8 @@ import lombok.Getter;
 /**
  * 异常返回信息枚举
  *
- * @author 赵海涛
- * @version $ID:ErrorEnums, v0.1 2018/3/30 赵海涛 Exp $
+ * @author 韩亮
+ * @version $ID:ErrorEnums, v0.1 2018/3/30 韩亮 Exp $
  */
 @Getter
 @AllArgsConstructor
@@ -44,10 +44,13 @@ public enum ErrorEnums {
     NO_DATA_SHIRO("000034","没有资格更新项目银行类型"),
     EXPORT_Daily_Monitoring_ERROR("000035", "日常监控报表导出失败"),
 	RONG_CLOUD_REST_ERROR("000408", "融云服务端请求失败"),
+
+
+    SYSTEM_EXCEPTION("5000", "系统异常!"),
     ;
 	
 	
     private final String code;
-    private final String desc;
+    private final String message;
 
 }

@@ -28,4 +28,7 @@ public interface TUserRepository extends JpaCommonRepository<TUserEntity, Intege
 
     @Query(value = "select * from t_user where id=:id",nativeQuery = true)
     TUserEntity findTUserEntityId(@Param("id") Integer id);
+
+    @Query("select e from TUserEntity e where e.roleId=:id")
+    TUserEntity findByRoleId(@Param("id") Integer id);
 }

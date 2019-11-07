@@ -41,7 +41,7 @@ public class BeanCopierUtils {
         try {
             instance = target.newInstance();
         } catch (InstantiationException | IllegalAccessException e) {
-            log.error(ErrorEnums.SYSTEM_BEAN_COPY_ERROR.getDesc(), e);
+            log.error(ErrorEnums.SYSTEM_BEAN_COPY_ERROR.getMessage(), e);
         }
         copyProperties(source, instance);
         return instance;

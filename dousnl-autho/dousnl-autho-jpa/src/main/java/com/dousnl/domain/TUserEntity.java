@@ -1,5 +1,7 @@
 package com.dousnl.domain;
 
+import io.swagger.annotations.ApiModelProperty;
+
 import javax.persistence.*;
 import java.util.Objects;
 
@@ -13,10 +15,20 @@ import java.util.Objects;
 @Entity
 @Table(name = "t_user")
 public class TUserEntity {
+
+    @ApiModelProperty(value="id")
     private int id;
+
+    @ApiModelProperty(value="名称")
     private String username;
+
+    @ApiModelProperty(value="密码")
     private String password;
+
+    @ApiModelProperty(value="角色id")
     private int roleId;
+
+    @ApiModelProperty(value="订单id")
     private String orderId;
 
     @Id
