@@ -1,11 +1,14 @@
 package com.dousnl.controller;
 
+import com.alibaba.fastjson.JSON;
 import com.dousnl.domain.AdviceCanel;
+import com.dousnl.domain.EsbPush;
 import com.dousnl.domain.TUserEntity;
 import com.dousnl.repository.TUserRepository;
 import com.dousnl.utils.enums.ErrorEnums;
 import com.dousnl.utils.exception.MyException;
 import com.dousnl.utils.response.Resp;
+import com.google.common.collect.Lists;
 import io.swagger.annotations.ApiOperation;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -15,6 +18,7 @@ import org.springframework.validation.FieldError;
 import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.*;
 import javax.validation.Valid;
+import java.util.List;
 
 /**
  * 模板控制器
@@ -65,7 +69,13 @@ public class ValidController {
     @GetMapping(value = "/{id}")
     public Resp getUser(@PathVariable("id") Integer id) {
         Resp resp=Resp.success();
-        resp.setData(tUserRepository.findTUserEntityById(id));
+        TUserEntity byId = tUserRepository.findById(id);
+        TUserEntity byId1 = tUserRepository.findById(id);
+        TUserEntity byId2 = tUserRepository.findById(id);
+        TUserEntity byId3 = tUserRepository.findById(id);
+        tUserRepository.findById(id);
+        tUserRepository.findById(id);
+        resp.setData(byId);
         return resp;
     }
     /**
@@ -138,5 +148,38 @@ public class ValidController {
         Resp resp = Resp.success();
         resp.setData(tUserRepository.findByRoleId(id));
         return resp;
+    }
+
+    /**
+     * 车主取消订单接口
+     * @return
+     */
+    @ApiOperation(value = "全局接口", notes = "全局接口",response = TUserEntity.class)
+    @PostMapping(value = "/push")
+    public Resp updatePush(@RequestBody EsbPush push) {
+        Resp resp = Resp.success();
+        log.info(">>>>>>>>>>>esb push:{}", JSON.toJSONString(push));
+        return resp;
+    }
+
+    /**
+     * 车主取消订单接口
+     * @return
+     */
+    @ApiOperation(value = "车主取消订单接口", notes = "车主取消订单接口")
+    @GetMapping(value = "/ids")
+    public List<TUserEntity> getUserId() {
+        List<Integer> list= Lists.newArrayList();
+        list.add(1);list.add(2);list.add(3);
+        List<Object[]> tUserByRoleId = tUserRepository.findTUserByRoleId(list);
+        List<TUserEntity> entities=Lists.newArrayList();
+        for (Object[] o:tUserByRoleId){
+            TUserEntity entity=new TUserEntity();
+            entity.setId((Integer) o[0]);
+            entity.setUsername((String) o[1]);
+            entities.add(entity);
+        }
+        System.out.println(JSON.toJSONString(entities));
+        return entities;
     }
 }

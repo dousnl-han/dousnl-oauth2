@@ -43,6 +43,11 @@ public class SpringAuthoServerApplication extends SpringBootServletInitializer {
     }
 
     @RequestMapping("/say")
+    public String say(){
+        return JSON.toJSONString(new User("zhangsan","beijing.satation"));
+    }
+
+    @RequestMapping("/sayhi")
     public String sayHi(){
         return JSON.toJSONString(new User("zhangsan","beijing.satation"));
     }

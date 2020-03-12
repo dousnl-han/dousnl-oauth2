@@ -1,9 +1,9 @@
 package com.dousnl.domain;
 
 import io.swagger.annotations.ApiModelProperty;
-
+import org.hibernate.annotations.Cache;
+import org.hibernate.annotations.CacheConcurrencyStrategy;
 import javax.persistence.*;
-import java.util.Objects;
 
 /**
  * TODO
@@ -14,21 +14,23 @@ import java.util.Objects;
  */
 @Entity
 @Table(name = "t_user")
+@Cacheable
+@Cache(usage = CacheConcurrencyStrategy.READ_ONLY, region = "com.dousnl.domain")
 public class TUserEntity {
 
-    @ApiModelProperty(value="id")
+    @ApiModelProperty(value = "id")
     private int id;
 
-    @ApiModelProperty(value="名称")
+    @ApiModelProperty(value = "名称")
     private String username;
 
-    @ApiModelProperty(value="密码")
+    @ApiModelProperty(value = "密码")
     private String password;
 
-    @ApiModelProperty(value="角色id")
+    @ApiModelProperty(value = "角色id")
     private int roleId;
 
-    @ApiModelProperty(value="订单id")
+    @ApiModelProperty(value = "订单id")
     private String orderId;
 
     @Id
@@ -87,5 +89,10 @@ public class TUserEntity {
     public TUserEntity(int id, int roleId) {
         this.id = id;
         this.roleId = roleId;
+    }
+
+    public TUserEntity(int id, String username) {
+        this.id = id;
+        this.username = username;
     }
 }

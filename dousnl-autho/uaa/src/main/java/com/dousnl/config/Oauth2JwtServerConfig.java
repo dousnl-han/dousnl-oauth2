@@ -26,7 +26,8 @@ import org.springframework.security.oauth2.provider.token.store.redis.RedisToken
 import javax.sql.DataSource;
 
 /**
- * TODO
+ * Oauth2认证服务
+ *
  * <p>1.0 oauth uaa配置</p>
  * @author hanliang
  * @version 1.0
