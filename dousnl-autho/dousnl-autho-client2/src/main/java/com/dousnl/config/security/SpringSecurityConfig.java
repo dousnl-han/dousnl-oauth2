@@ -1,6 +1,7 @@
 package com.dousnl.config.security;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.security.config.annotation.authentication.builders.AuthenticationManagerBuilder;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
@@ -21,7 +22,7 @@ import org.springframework.security.core.userdetails.UserDetailsService;
 public class SpringSecurityConfig extends WebSecurityConfigurerAdapter {
 
     @Autowired
-    private UserDetailsService userDetailsService;
+    private UserDetailsService userServiceDetail;
 
     @Override
     protected void configure(AuthenticationManagerBuilder auth) throws Exception {
@@ -30,7 +31,7 @@ public class SpringSecurityConfig extends WebSecurityConfigurerAdapter {
         //auth.inMemoryAuthentication().passwordEncoder(new BCryptPasswordEncoder())
         //        .withUser("dousnl").password(new BCryptPasswordEncoder().encode("123")).roles("USER").and()
         //        .withUser("admin").password(new BCryptPasswordEncoder().encode("456")).roles("USER", "ADMIN");
-        auth.userDetailsService(userDetailsService);
+        auth.userDetailsService(userServiceDetail);
     }
 
     @Override

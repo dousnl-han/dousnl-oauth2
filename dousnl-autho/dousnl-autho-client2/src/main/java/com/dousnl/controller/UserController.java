@@ -1,11 +1,12 @@
 package com.dousnl.controller;
 
+import com.dousnl.config.security.UserServiceDetail;
 import com.dousnl.domain.User;
 import com.dousnl.domain.UserLoginDTO;
-import com.dousnl.service.UserServiceDetail;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.access.prepost.PreAuthorize;
+import org.springframework.web.bind.annotation.*;
 
 import java.text.SimpleDateFormat;
 

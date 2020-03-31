@@ -9,6 +9,9 @@ import org.springframework.context.annotation.Configuration;
 import org.springframework.core.annotation.Order;
 import org.springframework.core.io.ClassPathResource;
 import org.springframework.core.io.Resource;
+import org.springframework.http.HttpEntity;
+import org.springframework.http.HttpHeaders;
+import org.springframework.http.HttpMethod;
 import org.springframework.security.jwt.crypto.sign.RsaVerifier;
 import org.springframework.security.oauth2.provider.token.TokenStore;
 import org.springframework.security.oauth2.provider.token.store.JwtAccessTokenConverter;
@@ -17,6 +20,7 @@ import org.springframework.util.FileCopyUtils;
 import org.springframework.web.client.RestTemplate;
 
 import java.io.IOException;
+import java.util.Map;
 
 /**
  * TODO
@@ -28,14 +32,17 @@ import java.io.IOException;
 @Configuration
 public class JwtConfig {
 
-    @Autowired
-    private JwtAccessTokenConverter jwtAccessTokenConverter;
+    //@Autowired
+    //private JwtAccessTokenConverter jwtAccessTokenConverter;
 
     //@Autowired
     //private ResourceServerProperties resourceServerProperties;
 
+    @Autowired
+    private RestTemplate restTemplate;
+
     @Bean
-    public TokenStore tokenStore(){
+    public TokenStore tokenStore(JwtAccessTokenConverter jwtAccessTokenConverter){
         return new JwtTokenStore(jwtAccessTokenConverter);
     }
 
@@ -57,6 +64,7 @@ public class JwtConfig {
     //非对称方式效验
     @Bean
     public JwtAccessTokenConverter accessTokenConverter() {
+        //第一种方式配置公钥(本地配置)
         JwtAccessTokenConverter converter= new JwtAccessTokenConverter();
         Resource resource= new ClassPathResource("public.cert");
         String  publicKey;
@@ -69,11 +77,15 @@ public class JwtConfig {
         converter.setVerifierKey(publicKey);
         //第二种方式
         converter.setVerifier(new RsaVerifier(publicKey));
+        System.out.println(">>>>第一种方式获取公钥>>>uaa publicKey:" + publicKey);
+
+        //第二种方式配置公钥(认证服务器获取)
+        //HttpEntity<Void> request = new HttpEntity<Void>(new HttpHeaders());
+        //String publicKeyFromUaa=(String)restTemplate.exchange("http://localhost:8080/oauth/token_key",HttpMethod.GET,request,Map.class).getBody()
+          //      .get("value");
+        //System.out.println(">>>>第二种方式获取公钥>>>uaa publicKeyFromUaa:" + publicKeyFromUaa);
+
         return converter;
     }
-    @Bean
-    public RestTemplate loadBalancedRestTemplate() {
-        RestTemplate restTemplate = new RestTemplate();
-        return restTemplate;
-    }
+
 }

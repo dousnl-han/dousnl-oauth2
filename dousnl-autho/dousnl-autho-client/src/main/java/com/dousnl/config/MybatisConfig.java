@@ -72,7 +72,7 @@ public class MybatisConfig {
      * <!-- 配置spring的PlatformTransactionManager，名字为默认值 -->  
      * @return
      */
-    @Bean
+    //@Bean
     public DataSourceTransactionManager  txManager(@Qualifier("dataSource")DataSource dataSource) {
     	 System.out.println("----------------事务配置已加载.....--------------");
         return new DataSourceTransactionManager(dataSource);

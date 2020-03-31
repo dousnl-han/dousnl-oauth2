@@ -49,4 +49,9 @@ public class SpringAuthoClientApplication extends SpringBootServletInitializer i
         return builder.sources(SpringAuthoClientApplication.class);
     }
 
+    @Bean
+    public RestTemplate loadBalancedRestTemplate() {
+        RestTemplate restTemplate = new RestTemplate();
+        return restTemplate;
+    }
 }

@@ -26,14 +26,14 @@ public class JwtAuthFilter extends GenericFilterBean {
         String token = request.getHeader(HEADER_STRING);
 
         //没有token
-        if (token == null || !token.startsWith(TOKEN_PREFIX)) {
-            try {
-                System.err.println(">>>>>>>>>>>>请求路径:" + request.getRequestURI());
-                throw new Exception("没有权限....");
-            } catch (Exception e) {
-                e.printStackTrace();
-            }
-        }
+//        if (token == null || !token.startsWith(TOKEN_PREFIX)) {
+//            try {
+//                System.err.println(">>>>>>>>>>>>请求路径:" + request.getRequestURI());
+//                throw new Exception("没有权限....");
+//            } catch (Exception e) {
+//                e.printStackTrace();
+//            }
+//        }
     }
 
     @Override

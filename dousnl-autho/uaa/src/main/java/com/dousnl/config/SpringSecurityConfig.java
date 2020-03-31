@@ -52,7 +52,7 @@ public class SpringSecurityConfig extends WebSecurityConfigurerAdapter {
                 .disable()
                 .authorizeRequests()
                 // 访问"/","/home"路径的请求都允许
-                .antMatchers("/say", "/home", "/staff", "/staff/*").permitAll()
+                .antMatchers("/login","/index.html", "/home", "/staff", "/staff/*").permitAll()
                 //此处仅仅是放行了SecurityFilterChain，整个Spring Security安全过滤器FilterChainProxy
                 //并没有全部放行，JwtAuthFilter依然有效，针对没有自定义过滤器时，此处放行可行，如果有自定义过滤器
                 //此处放行，并没有彻底放行，要彻底放行，需要在 configure(WebSecurity web)方法中放行
@@ -60,11 +60,15 @@ public class SpringSecurityConfig extends WebSecurityConfigurerAdapter {
                 // 而其他的请求都需要认证
                 .anyRequest().authenticated()
                 .and()
-                .addFilterBefore(new JwtAuthFilter(),UsernamePasswordAuthenticationFilter.class)
+                //只要放开此配置，就必须增加  web.ignoring().antMatchers("/sayhi");
+                // 类似这样的放行才有效
+                //.addFilterBefore(new JwtAuthFilter(),UsernamePasswordAuthenticationFilter.class)
                 .httpBasic()
                 .and()
-                // 修改spring security默认登录页面
-                .formLogin().loginPage("/login").permitAll().and().logout().permitAll();
+                //修改spring security默认登录页面
+                .formLogin()
+                .loginPage("/login")
+                .permitAll().and().logout().permitAll();
     }
 
     /**
@@ -83,6 +87,7 @@ public class SpringSecurityConfig extends WebSecurityConfigurerAdapter {
          * JwtAuthFilter未交由Spring管理，属于springSecurity自定义过滤器
          */
         web.ignoring().antMatchers("/sayhi");
+        //web.ignoring().antMatchers("/auth/login");
     }
 
     @Override
