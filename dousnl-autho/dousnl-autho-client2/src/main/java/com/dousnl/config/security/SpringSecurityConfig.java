@@ -1,7 +1,6 @@
-package com.dousnl.config;
+package com.dousnl.config.security;
 
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.security.config.annotation.authentication.builders.AuthenticationManagerBuilder;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
@@ -38,11 +37,11 @@ public class SpringSecurityConfig extends WebSecurityConfigurerAdapter {
     protected void configure(HttpSecurity http) throws Exception {
         http.authorizeRequests()
                 // 访问"/","/home"路径的请求都允许
-                .antMatchers("/", "/home", "/staff", "/staff/*").permitAll()
+                .antMatchers("/", "/index.html").permitAll()
                 // 而其他的请求都需要认证
                 .anyRequest().authenticated().and()
                 // 修改spring security默认登录页面
-                .formLogin().loginPage("/login").permitAll().and().logout().permitAll()
+                .formLogin().and().logout().permitAll()
                 .and().csrf().disable();
     }
 }

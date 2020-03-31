@@ -1,4 +1,4 @@
-package com.dousnl.service;
+package com.dousnl.config.security;
 
 import com.alibaba.fastjson.JSON;
 import com.dousnl.domain.JWT;
