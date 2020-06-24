@@ -3,6 +3,7 @@ package com.dousnl.controller;
 import com.alibaba.fastjson.JSON;
 import com.dousnl.domain.User;
 import com.dousnl.domain.UserLoginDTO;
+import com.dousnl.mapper.UserMapper;
 import com.dousnl.service.UserServiceDetail;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -27,6 +28,8 @@ public class UserController {
 
     @Autowired
     private UserServiceDetail userServiceDetail;
+    @Autowired
+    private UserMapper userMapper;
 
     private static final SimpleDateFormat format=new SimpleDateFormat("yyyy-MM-dd HH:mm:ss:sss");
 
@@ -45,5 +48,13 @@ public class UserController {
     public User login(@RequestParam("id") Integer id) {
         User user = userServiceDetail.getUser(id);
         return user;
+    }
+
+    @GetMapping("/update")
+    public int update(@RequestParam("id") Integer id) {
+        User u=new User();u.setId(id);u.setUsername("count");
+        int count = userMapper.updateByPrimaryKey(u);
+        System.out.println("count:"+count);
+        return count;
     }
 }
