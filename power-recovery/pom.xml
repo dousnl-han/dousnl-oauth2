@@ -62,7 +62,7 @@
     <jacoco-maven-plugin.version>0.8.1</jacoco-maven-plugin.version>
     <scala-maven-plugin.version>3.4.1</scala-maven-plugin.version>
     <sonar-maven-plugin.version>3.4.0.905</sonar-maven-plugin.version>
-    <openapi-generator-maven-plugin.version>3.0.1</openapi-generator-maven-plugin.version>
+    <openapi-generator-maven-plugin.version>5.1.0</openapi-generator-maven-plugin.version>
 
     <!-- Sonar properties -->
     <sonar.exclusions>src/main/webapp/content/**/*.*, src/main/webapp/i18n/*.js, target/www/**/*.*</sonar.exclusions>
