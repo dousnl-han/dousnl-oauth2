@@ -16,6 +16,7 @@
         <module>uaa</module>
         <module>dousnl-autho-kafka</module>
         <module>dousnl-autho-client2</module>
+        <module>dousnl-autho-kafka2</module>
     </modules>
     <packaging>pom</packaging>
     <!-- 替我们管理依赖的版本信息 -->

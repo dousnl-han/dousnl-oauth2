@@ -26,18 +26,17 @@ public class TestKafkaProducerController {
 
     @RequestMapping(value = "send",method=RequestMethod.POST)
     public String send(final String msg){
-        for (int i=0;i<1;i++){
+        for (int i=0;i<10;i++){
             Thread t=new Thread(new Runnable() {
                 @Override
                 public void run() {
-                    for (int i=0;i<10;i++){
+                    for (int i=0;i<10000;i++){
                         kafkaTemplate.send("test_topic", msg);
                     }
                 }
             });
             t.start();
         }
-        System.out.println("send success");
         return "success";
     }
 

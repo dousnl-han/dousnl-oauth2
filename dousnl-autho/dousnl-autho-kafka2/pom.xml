@@ -9,10 +9,10 @@
     </parent>
     <modelVersion>4.0.0</modelVersion>
 
-    <artifactId>dousnl-autho-kafka</artifactId>
+    <artifactId>dousnl-autho-kafka2</artifactId>
     <packaging>war</packaging>
 
-    <name>dousnl-autho-kafka</name>
+    <name>dousnl-autho-kafka2</name>
     <url>http://www.example.com</url>
 
     <properties>
@@ -22,10 +22,6 @@
     </properties>
 
     <dependencies>
-        <dependency>
-            <groupId>com.alibaba</groupId>
-            <artifactId>fastjson</artifactId>
-        </dependency>
         <dependency>
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-starter-web</artifactId>
@@ -82,3 +78,4 @@
         </resources>
     </build>
 </project>
+
